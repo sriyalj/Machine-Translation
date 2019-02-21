@@ -1,0 +1,6 @@
+model path:
+/gpfs/hpchome/maxi96/mt2018/big_files/data/eten_data/4_separated/experiments/basicmodel
+
+results path:
+/gpfs/hpchome/maxi96/mt2018/big_files/data/eten_data/4_separated/
+and in this github folder

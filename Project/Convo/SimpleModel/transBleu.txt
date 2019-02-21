@@ -1,0 +1,2 @@
+[jayasing@rocket am]$ perl ../moses-scripts/scripts/generic/multi-bleu.perl dev.en < DeTokTran
+BLEU = 9.63, 35.7/13.6/6.1/2.9 (BP=1.000, ratio=1.098, hyp_len=41886, ref_len=38154)

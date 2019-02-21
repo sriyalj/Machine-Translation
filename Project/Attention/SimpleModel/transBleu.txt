@@ -1,0 +1,2 @@
+perl ../moses-scripts/scripts/generic/multi-bleu.perl ../data/dev.en < dev.model5.detru.deto.trans 
+BLEU = 12.62, 41.1/17.3/8.3/4.3 (BP=1.000, ratio=1.040, hyp_len=39698, ref_len=38154)

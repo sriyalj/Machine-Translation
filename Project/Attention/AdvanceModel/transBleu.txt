@@ -1,0 +1,2 @@
+(mtenv-cuda8-1) [jayasing@rocket data]$ perl ../moses-scripts/scripts/generic/multi-bleu.perl dev.en < deTok.Trans
+BLEU = 15.20, 44.4/20.3/10.4/5.7 (BP=1.000, ratio=1.054, hyp_len=40208, ref_len=38154)
