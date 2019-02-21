@@ -164,7 +164,7 @@ As a result we too expected a better BLEU score from the transformer model compa
    
   - The hyperparameters of the three models are as follows
    
-   	- [Hyperparameters] of the Simple Attention Model:
+   	- Hyperparameters of the Simple Attention Model:
 	
 	``` 
 	        --encoder transformer \
@@ -178,7 +178,7 @@ As a result we too expected a better BLEU score from the transformer model compa
 	        --max-num-epochs 10 \
 	        --checkpoint-frequency 25
 	```
-	- [Hyperparameters] of intermediate Attention Model
+	- Hyperparameters of intermediate Attention Model
 	```
 	        --seed 1 \
 	        --batch-type word \
@@ -211,7 +211,7 @@ As a result we too expected a better BLEU score from the transformer model compa
 		--weight-init-xavier-factor-type avg 
 	```
 	
-	- [Hyperparameters] of the Advance Attention Model
+	- Hyperparameters of the Advance Attention Model
 	
   	```
   	        --batch-size 4096  \
