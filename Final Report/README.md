@@ -41,7 +41,7 @@ Training params:
 Then we should compare our just trained models' translation of "Tere hommikust" with the translation that we got from a
 simple model that was trained in the seminar. 
 - What have you done?<br><br>
-We realized this by training a sockeye model with the following params. Details can be found in the params excel sheet in our practicum2 repository. 
+We realized this by training a sockeye model with the following params. 
 ```
  --encoder rnn \ --decoder rnn \ --num-layers 1:1 \--rnn-cell-type lstm﻿
 
@@ -64,7 +64,6 @@ As a result we have a model trained according to the requirements. It turned out
 
 - What were the obstacles and how did you overcome them?<br><br>
 Our main challenge was to find the proper parameters that fulfill the desired training behaviour. We overcame this by asking <code> sockeye.train -h </code> and finding out the params. For some, this was trivial. We calculated checkpoint frequency by dividing the given 648424 training instances by batch size 64, resulting in ~10132 iterations in an epoch. The checkpoint frequency describes after how many iterations the algorithm shall create a checkpoint, that's why we divided 10132 by 3 (the given checkpoint frequency) resulting in a parameter of 3377.
-- The results can be found in our [practicum 2 homework folder](https://github.com/mt2018-tartu-shared-task/practicum2-fishbone/tree/master/practicum2_hw), last changed on 22 Oct 2018, 18:04 EEST <br>
 - Contribution of each team member (who done what) 
   - param finding: Maxi Fischer, Sophie Gräfnitz, Sriyal Jayasinghe
   - model training: Maxi Fischer, Sriyal Jayasinghe
@@ -88,7 +87,7 @@ We
  We achieved a BLEU score of 9.83. From error analysis we learnt, that our model is often close to reference translation, but has problems dealing with long sentences and names. Sometimes, the sentence structure suffers from grammatical nonsense, left-outs and repetitions. From the sentence alignments we learned that a diffuse attention usually indicates a diffuse translation in the end. 
 - What were the obstacles and how did you overcome them? <br><br>
  At first we translated a wrong dev set (in HTML format) and only achieved BLEU 0.04, so this was the point when we realized our mistake and reran the translation on the correct dev set. A short problem was to find a good method to postprocess and to calculate BLEU. Our mentor did support us in this case. Finally, we found the linked moses scripts. 
-- Our results can be found in our [practicum 4 homework folder](https://github.com/mt2018-tartu-shared-task/practicum2-fishbone/commit/3e413c4d2a503d77f2f3140a4abb37e22eb0a217), last changed on 26 Oct 2018, 12:32 EEST
+
 - Contribution of each team member <br><br>
   - preprocessing and model traning: Sriyal Jayasinghe
   - translation of dev set: Sriyal Jayasinghe
@@ -113,9 +112,6 @@ The aim of our project twas to compare the Attention based machine translation m
 - **Convolutional architecture** is frequently applied in image processing. Long-term dependencies can be learned by applying filters on the original data, which means the greater the distance between two tokens, the later their dependence is modelled. The filtering steps are applied sequentially, while each filterig step means the convolution of subphrases. These convolutions can be easiliy parallelized. Each layer in the paper's network consists of first convolution, applying a non-linearity and then multi-step attention (which is slightly different from multi head attention). 
 
 
-
-- [presentation slides](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/Fishbone_Presentation.pdf)
-
 ## Section 3: Comparative experiment
 ### Section 3.1: Description
 
@@ -137,12 +133,12 @@ As a result we too expected a better BLEU score from the transformer model compa
     training  dataset: [Europal Estonian & English dataset](http://www.statmt.org/europarl/v7/et-en.tgz)<br> 
     This data set contained two files. One is the Estonian transcript of a speech made at the Europian Parliament and the other being the corresponding english translation of the Estonian transcript. Each of the files contained 651746 sentences. 
     
-    test and dev dataset: [English dev set](https://github.com/mt2018-tartu-shared-task/practicum2/blob/master/dev.en) and [Estonian dev set](https://github.com/mt2018-tartu-shared-task/practicum2/blob/master/dev.et) <br>
+    test and dev dataset: [English dev set](https://github.com/sriyalj/Machine-Translation/blob/master/Project/dev.en) and [Estonian dev set](https://github.com/sriyalj/Machine-Translation/blob/master/Project/dev.et) <br>
     Each of these files had 2000 sentences. They are confusingly named dev.* , although they are also used for testing. The test/dev data set is another subset drawn from Europarl Estonian & English dataset that doesnt have intersection with the training data set. For the testing of the models the Estonian test set (= dev.et) was translated and the English reference translation (= dev.en) was used to calculate the BLEU score of this translation. During training, dev.* was used for intermediate evaluating the training process.
     
     
     
-  - The preprocessing steps that we followed were the same preprocessing steps we follwed in [Practicum 2](https://github.com/mt2018-tartu-shared-task/practicum2/blob/master/seminar.md#data-preprocessing) 
+  - The preprocessing steps that we followed were the same preprocessing steps we follwed in Practicum 2
   
   	Those steps are as follows:
   
@@ -168,7 +164,7 @@ As a result we too expected a better BLEU score from the transformer model compa
    
   - The hyperparameters of the three models are as follows
    
-   	- [Hyperparameters](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/Attention/SimpleModel/Train.sbatch) of the Simple Attention Model:
+   	- [Hyperparameters] of the Simple Attention Model:
 	
 	``` 
 	        --encoder transformer \
@@ -182,7 +178,7 @@ As a result we too expected a better BLEU score from the transformer model compa
 	        --max-num-epochs 10 \
 	        --checkpoint-frequency 25
 	```
-	- [Hyperparameters](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/Attention/IntermediateModel/Train.sbatch) of intermediate Attention Model
+	- [Hyperparameters] of intermediate Attention Model
 	```
 	        --seed 1 \
 	        --batch-type word \
@@ -215,7 +211,7 @@ As a result we too expected a better BLEU score from the transformer model compa
 		--weight-init-xavier-factor-type avg 
 	```
 	
-	- [Hyperparameters](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/Attention/AdvanceModel/Train.sbatch) of the Advance Attention Model
+	- [Hyperparameters] of the Advance Attention Model
 	
   	```
   	        --batch-size 4096  \
@@ -244,9 +240,9 @@ As explained above the above three models were tested by making the models trans
 
  Below are the BLEU score values we obtained for the three models
  
- - [Simple Attention Model](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/Attention/SimpleModel/transBleu.txt) - 12.62
- - [Intermediate Attention Model](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/Attention/IntermediateModel/transBleu.txt) - 14.40
- - [Advance Attention Model](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/Attention/AdvanceModel/transBleu.txt) - 15.20
+ - Simple Attention Model - 12.62
+ - Intermediate Attention Model - 14.40
+ - Advance Attention Model - 15.20
  
 WIth the above BLEU score values it can be seen that the Advance Attention Model produced the best results
 
@@ -256,13 +252,6 @@ The biggest obstacle that we faced was understanding the architecture proposed i
 
 To overcome the above mentioned obstacle we did a lot a reading and researching on the proposed architecture and we examined several implementations of the proposed architecture done using other environments such as [Tensorflow](https://github.com/Kyubyong/transformer), [PyTorch](https://github.com/jadore801120/attention-is-all-you-need-pytorch) and  [Marian](https://github.com/marian-nmt/marian-examples/tree/master/transformer). Additionally we watched a [presentation video](https://www.youtube.com/watch?v=rBCqOTEfxvg&t=1019s) by the Google team who proposed this architecure and another [video](https://www.youtube.com/watch?v=iDulhoQ2pro&t=513s) which explained the proposed architecture.
 
-
-- Link to the solution on GitHub (link to the final submission commit) + submission timestamp (time of the GitHub commit)
-
-	- link to the solution (https://github.com/mt2018-tartu-shared-task/project-fishbone/tree/master/Attention)
-	- link to the final submission commit (https://github.com/mt2018-tartu-shared-task/project-fishbone/commit/39720308ba255f1c5e92dc2a30aca07fce09a8e1)
-	- last timestamp on 04 Nov 2018, 20.49 EEST 
-	
 	
 - Contribution of each team member
 
@@ -285,7 +274,7 @@ To overcome the above mentioned obstacle we did a lot a reading and researching 
    
   - The hyperparameters of the two models are as follows
   
-  	- [Hyperparameters](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/Convo/SimpleModel/Train.sbatch) of the Simple Convolution Model:
+  	- Hyperparameters of the Simple Convolution Model:
 	
 	```
 		--encoder cnn \
@@ -300,7 +289,7 @@ To overcome the above mentioned obstacle we did a lot a reading and researching 
                 --checkpoint-frequency 1000
 	```
   	
-	 - [Hyperparameters](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/Convo/AdvanceModel/Train.sbatch) of the Advance Convolution Model:
+	 - Hyperparameters of the Advance Convolution Model:
 	
 	```
 		--seed=1 \
@@ -333,8 +322,8 @@ As explained earlier the above two models were tested by making the models trans
 
 Below are the BLEU score values we obtained on the English dev set for the two convolution models
  
- - [Simple Convolution Model](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/Convo/SimpleModel/transBleu.txt) - 9.63 	
- - [Advance Convolution Model](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/Convo/AdvanceModel/transBleu.txt) - 11.30
+ - Simple Convolution Model - 9.63 	
+ - Advance Convolution Model - 11.30
 	
 When comparing the BLEU scores of the 5 models (3 Attention models + 2 Convolution models) it can be seen that even the Simple Attention Model produces a better BLEU score (12.62) than the Advanced Convolution Model (11.30)
 	
@@ -344,14 +333,6 @@ When comparing the BLEU scores of the 5 models (3 Attention models + 2 Convoluti
 Same as with the Attention model the main obstacle was understanding the architecture proposed in the paper. But compared to the Attention model understanding this paper was relaively easy as we had an exposure to the concept of attention by the time we started working on this paper and we had previous exposure and experience of the concept of convolutions by having worked with convolutional neural networks.
 	
 Yet we examined [Tensorflow](https://github.com/tobyyouup/conv_seq2seq), [PyTorch](https://github.com/pytorch/fairseq)  implementations of the paper and watched a [video](https://www.youtube.com/watch?v=iXGFm7oC9TE&t=35s) which explain the architecture to over come the above obstacle.
-	
-	
-- Link to the solution on GitHub (link to the final submission commit) + submission timestamp (time of the GitHub commit)
-
-	- link to the solution (https://github.com/mt2018-tartu-shared-task/project-fishbone/tree/master/Convo)
-	- link to the final submission commit (https://github.com/mt2018-tartu-shared-task/project-fishbone/commit/5ecfc8de032b94440b4ffbe8eb50acf2ff93014d)
-	- last timestamp on 06 Nov 2018, 09.53 EEST
-	
 	
 - Contribution of each team member (who done what)
 
@@ -375,13 +356,13 @@ Out of the five models we trained the Advanced Attention Model had the best BLEU
     The test set (we used for validating our results during training (early stopping)) consists of 500 sentences per corpora per language, so 2000 sentences concatenated per language (denoted by "combined.dev.e*").
     The dev set (we used for validating our results after training to retrieve BLEU score) consists of 1000 sentences per corpora per language, so 4000 sentences concatenated per language (denoted by "combined.test.e*").
     
-    Out-of-domain dev dataset - [English dev set](https://github.com/mt2018-tartu-shared-task/practicum2/blob/master/dev.en) and [Estonian dev set](https://github.com/mt2018-tartu-shared-task/practicum2/blob/master/dev.et). Each of these files had 2000 sentences.
+    Out-of-domain dev dataset - [English dev set](https://github.com/sriyalj/Machine-Translation/blob/master/Project/dev.en) and [Estonian dev set](https://github.com/sriyalj/Machine-Translation/blob/master/Project/dev.et). Each of these files had 2000 sentences.
     
   - As the corpora were already preprocessed, the only preprocessing necessary was the concatenation by Unix pipe operator (cat file1 file2 > combinedfile).
    
   - The hyperparameters are the same as the ones of the Advanced Model of section 3. We trained the model for 4-5 days.
    
-   	- [Hyperparameters](hhttps://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/FinalModel/Train.sbatch) of the final model:
+   	- Hyperparameters of the final model:
 	
   	```
   	        --batch-size 4096  \
@@ -408,8 +389,8 @@ Out of the five models we trained the Advanced Attention Model had the best BLEU
 
 	Below are the BLEU score values we obtained on the in-domain and out-of-domain English dev set for the final model
 
-	- [In-Domain](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/FinalModel/final_bleu_score.txt) - 36.17	
-	- [Out-Of-Domain](https://github.com/mt2018-tartu-shared-task/project-fishbone/blob/master/FinalModel/pract2_dev_bleu_score.txt) - 14.45
+	- In-Domain - 36.17	
+	- Out-Of-Domain - 14.45
 		
 	You can see that our in-domain dev set performance is extremely good, while the out-of-domain dev set performance is actually worse than in the original training exclusively on the Europarl data. That can be explained by the additional corpora provided, the biggest part of it is informal OpenSubtitles data. That might lead to different translations than only considering the more formal Europarl data. Additionally the speeches in the European parlament are closer to political news depicted in the Out-Of-Domain dataset.
 
@@ -424,16 +405,6 @@ Our task was to compare the translation quality of the out-of-domain set of our 
 	- problematic sentences were those ones with a complicated grammar structure, long sentences, sentences containing many names
 	- we preferred our own model in approximately 21% of the analysed sentences. 
 	- we suspect that the TartuNLP Translator has seen much more formal training data and hence performs better at proper name recognition. Also our model was trained on a large proportion of informal speech, so this decreases its quality of a formal text. The word missing and adding probably derive from attention errors made because the attentions were trained on other sentence structures. 
-	
-
-- Github Links
-	
-	- final submission commit (https://github.com/mt2018-tartu-shared-task/project-fishbone/commit/efeb7970cee4fbcbd26e4ba0d2beab59576361a6)
-	- only file renamings (https://github.com/mt2018-tartu-shared-task/project-fishbone/commit/bc96a8f12d221b0396b81655a3128d0feb676201)
-	- last timestamp on 25 Nov 2018, 19.25 EEST (28 Nov 2018, 11.25 EEST for renamings)
-	- final manual evaluation submission commit (https://github.com/mt2018-tartu-shared-task/project-fishbone/commit/83ecac5fe88b8d516ece262b69b5722c1f2f3f01)
-	- last timestamp on 29 Nov 2018, 19.44 EEST
-	
 	
 - Contribution of each team member (who done what)
 
